@@ -1,13 +1,15 @@
 ﻿Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
-function Get-Log { Get-ChildItem Q:\PSLogs\*.log }
+$variable:preference:log:path = "P:\PSLogs"
+
+function Get-Log { Get-ChildItem $variable:preference:log:path\*.log }
 function Search-Log([string] $text)
 {
 	function convert-date([string] $date)
 	{
 		[System.DateTime]::ParseExact($date.Replace(".log",""), "yyyyMMdd-HHmmss", [System.Globalization.CultureInfo]::InvariantCulture)
 	}
-	Get-Log | Select-String $text | Select FileName, LineNumber | Group-Object FileName | Select Name, Count, Group | % { New-Object PSObject -Property @{Date=convert-date($_.Name); FileName="Q:\PSLogs\"+$_.Name; Line= $_.Group | % {$_.LineNumber}; Count = $_.Count} } | Sort -Descending -Property Date | Format-List
+	Get-Log | Select-String $text | Select FileName, LineNumber | Group-Object FileName | Select Name, Count, Group | % { New-Object PSObject -Property @{Date=convert-date($_.Name); FileName="$variable:preference:log:path\"+$_.Name; Line= $_.Group | % {$_.LineNumber}; Count = $_.Count} } | Sort -Descending -Property Date | Format-List
 }
 
 function Get-Checksum
@@ -29,8 +31,8 @@ function Get-Checksum
 # If module is installed in a default location ($env:PSModulePath),
 # use this instead (see about_Modules for more information):
 Import-Module posh-git
-Import-Module PsGet
-Import-Module pscx -force -arg @{CD_EchoNewLocation = $false}
+#Import-Module PsGet
+Import-Module pscx -force -arg @{CD_EchoNewLocation = $false; ModulesToImport = @{Wmi = $false}}
 Import-Module Invoke-ElevatedCommand
 
 Set-Alias  Out-Clipboard $env:SystemRoot\system32\clip.exe
@@ -78,12 +80,12 @@ Pop-Location
 $GitPromptSettings.WorkingForegroundColor="Red"
 $GitPromptSettings.UntrackedForegroundColor="Red"
 
-if(!(Test-Path Q:\PSLogs))
+if(!(Test-Path $variable:preference:log:path))
 {
-	New-Item -ItemType Directory -Path Q:\PSLogs
+	New-Item -ItemType Directory -Path $variable:preference:log:path
 }
 
-$pathName = "Q:\PSLogs\" + ([System.DateTime]::Now.ToString("yyyyMMdd-HHmmss")) + ".log"
+$pathName = "$variable:preference:log:path\" + ([System.DateTime]::Now.ToString("yyyyMMdd-HHmmss")) + ".log"
 
 try
 {

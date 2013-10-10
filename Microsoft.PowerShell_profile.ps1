@@ -1,6 +1,6 @@
 ﻿Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
 
-$variable:preference:log:path = "P:\PSLogs"
+$variable:preference:log:path = "C:\PSLogs"
 
 function Get-Log { Get-ChildItem $variable:preference:log:path\*.log }
 function Search-Log([string] $text)

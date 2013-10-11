@@ -34,6 +34,7 @@ Import-Module posh-git
 #Import-Module PsGet
 Import-Module pscx -force -arg @{CD_EchoNewLocation = $false; ModulesToImport = @{Wmi = $false}}
 Import-Module Invoke-ElevatedCommand
+Import-Module ProjectN
 
 Set-Alias  Out-Clipboard $env:SystemRoot\system32\clip.exe
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }

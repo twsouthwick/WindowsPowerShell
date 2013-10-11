@@ -97,3 +97,9 @@ catch [Exception]
 { }
 
 Remove-Variable pathName
+
+# Include Other script files
+$path = $PSCommandPath | Split-Path -Parent
+
+. $path\SetupVSEnvironment.ps1
+

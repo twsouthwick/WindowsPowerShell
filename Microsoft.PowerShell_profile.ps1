@@ -1,8 +1,6 @@
-﻿Push-Location (Split-Path -Path $MyInvocation.MyCommand.Definition -Parent)
-
-Import-Module posh-git
+﻿Import-Module posh-git
 #Import-Module PsGet
-Import-Module pscx -force -arg @{CD_EchoNewLocation = $false; ModulesToImport = @{Wmi = $false}}
+Import-Module pscx -force -arg @{CD_EchoNewLocation = $false}
 Import-Module Invoke-ElevatedCommand
 Import-Module ProjectN
 
@@ -14,5 +12,3 @@ $path = Join-Path $PSCommandPath ".."
 . $path\Prompt.ps1
 . $path\SetupAliases.ps1
 . $path\Get-Checksum.ps1
-
-Pop-Location

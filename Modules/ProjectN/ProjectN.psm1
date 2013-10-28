@@ -5,7 +5,7 @@ Function Invoke-QuickRun(
 [string]$CoreCLRPath)
 {
 	$temp = [System.IO.Path]::GetTempPath()
-	$qa = "c:\ProjectN\src\qa"
+	$qa = "s:\ProjectN\src\qa"
 	
 	if($Type -eq "Desktop")
 	{
@@ -15,8 +15,9 @@ Function Invoke-QuickRun(
 	{
 		& $qa\runtools\QuickRun\QuickRun.exe $TestPath  -coreclrroot:$CoreCLRPath /save /c:CoreClr -ILCPath:$temp -MRTPath:$temp
 	}
-	else
+	elseif ($Type -eq "ProjectN")
 	{
-		throw "$Type is not supported by this script."
+		$ilcpath = "s:\ilc"
+		& $qa\runtools\QuickRun\QuickRun.exe $TestPath  /save /c:ProjectN -ILCPath:$ilcpath -MRTPath:$ilcpath
 	}
 }

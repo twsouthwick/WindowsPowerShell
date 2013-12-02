@@ -12,3 +12,5 @@ $path = Join-Path $PSCommandPath ".."
 . $path\Prompt.ps1
 . $path\SetupAliases.ps1
 . $path\Get-Checksum.ps1
+. $path\TextHelpers.ps1
+

@@ -5,6 +5,7 @@ $pscxpath="C:\Program Files (x86)\PowerShell Community Extensions\Pscx3"
 
 . $path\SetupAliases.ps1
 
+Import-Module $modulepath\PSReadLine\PSReadLine\bin\Release\PSReadLine.psd1
 Import-Module $modulepath\posh-git
 #Import-Module PsGet
 Import-Module $pscxpath\pscx -force -arg @{CD_EchoNewLocation = $false}

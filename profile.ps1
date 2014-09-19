@@ -23,3 +23,6 @@ Import-Module $modulepath\Invoke-ElevatedCommand
 
 $PROFILE = Join-Path $path "profile.ps1"
 
+Set-PSReadlineOption -EditMode Vi
+Set-PSReadlineKeyHandler -Key Tab -Function Complete
+Set-PSReadlineOption -BellStyle Visual

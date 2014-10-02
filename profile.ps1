@@ -7,7 +7,9 @@ $pscxpath="C:\Program Files (x86)\PowerShell Community Extensions\Pscx3"
 
 if($host.Name -eq 'ConsoleHost')
 {
-	Import-Module $modulepath\PSReadLine\PSReadLine\bin\Release\PSReadLine.psd1
+  #Set-PSReadlineOption -EditMode Vi
+  Set-PSReadlineKeyHandler -Key Tab -Function Complete
+  Set-PSReadlineOption -BellStyle Visual
 }
 
 Import-Module $modulepath\posh-git
@@ -23,6 +25,4 @@ Import-Module $modulepath\Invoke-ElevatedCommand
 
 $PROFILE = Join-Path $path "profile.ps1"
 
-Set-PSReadlineOption -EditMode Vi
-Set-PSReadlineKeyHandler -Key Tab -Function Complete
-Set-PSReadlineOption -BellStyle Visual
+

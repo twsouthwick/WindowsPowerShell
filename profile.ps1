@@ -25,4 +25,4 @@ Import-Module $modulepath\Invoke-ElevatedCommand
 
 $PROFILE = Join-Path $path "profile.ps1"
 
-
+$PSDefaultParameterValues["Out-Default:OutVariable"] = "__" 

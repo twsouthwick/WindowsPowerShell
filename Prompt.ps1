@@ -5,32 +5,15 @@ function prompt {
 	# Reset color, which can be messed up by Enable-GitColors
 	$Host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
 
-	$p = $pwd.ProviderPath.Split([System.IO.Path]::DirectorySeparatorChar)
-	$dir = $p[$p.Length-1]
-	
-	if($dir -eq ""){
-		$dir = "\"
-	}
-	
-	if($pwd.Path -eq (resolve-path ~).Path){
-		$dir = "~"
-	}
+	$dir = $pwd.Path.Replace("Microsoft.PowerShell.Core\FileSystem::", "");
 
-	$providerSplit=$pwd.Path.Split("::")
-
-	if($providerSplit[0].StartsWith("Microsoft.PowerShell.Core\FileSystem")){
-		$root = "\\" + $providerSplit[2].Split("\")[2]
-	} else {
-		$root = $pwd.Drive.Root
-	}
-
-	Write-Host ("[$root] $dir" ) -nonewline
+	Write-Host ("`n[$dir]") -nonewline -ForegroundColor DarkGreen
 
 	Write-VcsStatus
 
 	$global:LASTEXITCODE = $realLASTEXITCODE
 
-	return " $ "
+	return "`n$ "
 }
 
 Enable-GitColors

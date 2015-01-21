@@ -20,7 +20,6 @@ Import-Module $modulepath\Invoke-ElevatedCommand
 . $path\SetupVSEnvironment.ps1
 . $path\Logs.ps1
 . $path\Prompt.ps1
-. $path\TextHelpers.ps1
 
 $PROFILE = Join-Path $path "profile.ps1"
 

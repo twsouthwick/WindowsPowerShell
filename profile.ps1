@@ -13,7 +13,6 @@ if($host.Name -eq 'ConsoleHost')
 }
 
 Import-Module $modulepath\posh-git
-#Import-Module PsGet
 #Import-Module $pscxpath\pscx -force -arg @{CD_EchoNewLocation = $false}
 Import-Module $modulepath\Invoke-ElevatedCommand
 

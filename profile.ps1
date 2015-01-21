@@ -16,7 +16,6 @@ Import-Module $modulepath\posh-git
 #Import-Module $pscxpath\pscx -force -arg @{CD_EchoNewLocation = $false}
 Import-Module $modulepath\Invoke-ElevatedCommand
 
-. $path\SetupVSEnvironment.ps1
 . $path\Logs.ps1
 . $path\Prompt.ps1
 

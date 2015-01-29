@@ -1,23 +1,24 @@
-﻿# Include Other script files
-$path = Join-Path $PSCommandPath ".."
-$modulepath = Join-Path $path Modules
-$pscxpath="C:\Program Files (x86)\PowerShell Community Extensions\Pscx3"
+﻿$env:GIT="C:\Program Files (x86)\git\bin\git.exe"
+$env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\"
 
-. $path\SetupAliases.ps1
+$path = Join-Path $PSCommandPath ".."
 
 if($host.Name -eq 'ConsoleHost')
 {
-  #Set-PSReadlineOption -EditMode Vi
+  Import-Module PSReadLine-vim
+
+  Set-PSReadlineOption -EditMode Vi
   Set-PSReadlineKeyHandler -Key Tab -Function Complete
   Set-PSReadlineOption -BellStyle Visual
 }
 
-Import-Module $modulepath\posh-git
-#Import-Module $pscxpath\pscx -force -arg @{CD_EchoNewLocation = $false}
-Import-Module $modulepath\Invoke-ElevatedCommand
+Import-Module posh-git2
+Import-Module Pscx -force -arg @{CD_EchoNewLocation = $false}
+Import-Module Invoke-ElevatedCommand
 
 . $path\Logs.ps1
 . $path\Prompt.ps1
+. $path\SetupAliases.ps1
 
 $PROFILE = Join-Path $path "profile.ps1"
 

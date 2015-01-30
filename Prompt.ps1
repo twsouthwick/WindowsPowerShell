@@ -18,5 +18,6 @@ function prompt {
 
 Enable-GitColors
 
+$GitPromptSettings.EnableWindowTitle = ' '
 $GitPromptSettings.WorkingForegroundColor="Red"
 $GitPromptSettings.UntrackedForegroundColor="Red"

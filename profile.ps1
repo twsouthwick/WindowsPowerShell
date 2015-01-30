@@ -1,4 +1,26 @@
-﻿$env:GIT="C:\Program Files (x86)\git\bin\git.exe"
+﻿#############################################
+## Set background color                    ##
+#############################################
+& {
+  $wid = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+  $prp = New-Object System.Security.Principal.WindowsPrincipal($wid)
+  $adm = [System.Security.Principal.WindowsBuiltInRole]::Administrator
+  
+  if ($prp.IsInRole($adm)) {
+    $Host.UI.RawUI.Backgroundcolor = "DarkRed"
+  }
+  else{
+    $Host.UI.RawUI.Backgroundcolor = "Black"
+  }
+}
+
+Clear-Host
+
+#############################################
+## Set up variables                        ##
+#############################################
+
+$env:GIT="C:\Program Files (x86)\git\bin\git.exe"
 $env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\"
 
 $path = Join-Path $PSCommandPath ".."

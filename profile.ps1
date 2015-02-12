@@ -46,9 +46,6 @@ Import-Module Pscx -force -arg @{CD_EchoNewLocation = $false}
 function prompt {
 	$realLASTEXITCODE = $LASTEXITCODE
 
-	# Reset color, which can be messed up by Enable-GitColors
-	$Host.UI.RawUI.ForegroundColor = $GitPromptSettings.DefaultForegroundColor
-
 	$dir = $pwd.Path.Replace("Microsoft.PowerShell.Core\FileSystem::", "");
 
 	Write-Host ("`n[$dir]") -nonewline -ForegroundColor DarkGreen
@@ -60,7 +57,7 @@ function prompt {
 	return "`n$ "
 }
 
-Enable-GitColors
+$env:TERM = 'cygwin'
 
 $GitPromptSettings.EnableWindowTitle = " "
 $GitPromptSettings.WorkingForegroundColor = "Red"

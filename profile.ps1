@@ -23,7 +23,7 @@ Clear-Host
 $env:GIT="C:\Program Files (x86)\git\bin\git.exe"
 $env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\"
 
-$path = Join-Path $PSCommandPath ".." | Resolve-Path
+$path = Resolve-Path "$PSCommandPath\.."
 
 #############################################
 ## Import modules                          ##

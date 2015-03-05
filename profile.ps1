@@ -96,5 +96,7 @@ Set-Alias -Name kvm -Value "$env:USERPROFILE\.k\bin\kvm.ps1"
 
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }
 
+New-PSDrive repos FileSystem $env:USERPROFILE\Source\Repos\ | Out-Null
+
 $PROFILE = Join-Path $path "profile.ps1"
 $PSDefaultParameterValues["Out-Default:OutVariable"] = "0" 

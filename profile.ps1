@@ -24,8 +24,6 @@ $env:GIT="C:\Program Files (x86)\git\bin\git.exe"
 $env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\"
 $env:GIT_SSH="C:\Program Files (x86)\PuTTY\plink.exe"
 
-$path = Resolve-Path "$PSCommandPath\.."
-
 #############################################
 ## Import modules                          ##
 #############################################
@@ -98,5 +96,5 @@ function Copy-Location  { (Get-Location).Path | Out-Clipboard }
 
 New-PSDrive repos FileSystem $env:USERPROFILE\Source\Repos\ | Out-Null
 
-$PROFILE = Join-Path $path "profile.ps1"
+$PROFILE = $PSCommandPath
 $PSDefaultParameterValues["Out-Default:OutVariable"] = "0" 

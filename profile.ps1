@@ -22,6 +22,7 @@ Clear-Host
 
 $env:GIT="C:\Program Files (x86)\git\bin\git.exe"
 $env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\"
+$env:GIT_SSH="C:\Program Files (x86)\PuTTY\plink.exe"
 
 $path = Resolve-Path "$PSCommandPath\.."
 

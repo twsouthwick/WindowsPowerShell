@@ -100,7 +100,10 @@ if (Get-Command -Name hub -OutVariable hubcmd -ErrorAction Ignore)
 
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }
 
+# Create a drive for source code
 New-PSDrive repos FileSystem $env:USERPROFILE\Source\Repos\ | Out-Null
 
 $PROFILE = $PSCommandPath
+
+# Results will be stored in the $0 variables
 $PSDefaultParameterValues["Out-Default:OutVariable"] = "0" 

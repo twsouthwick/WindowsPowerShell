@@ -3,8 +3,8 @@ Import-Module OneGet
 # Get PS components
 Register-PSRepository -Name tws-ps -SourceLocation https://www.myget.org/F/tws-ps/ -InstallationPolicy Trusted
 
-Find-Package -Source tws-ps | Install-Package -Scope CurrentUser
-Find-Package Pscx -Source PSGallery | Install-Package -Scope CurrentUser
+Find-Package -Source tws-ps | Install-Package -Scope CurrentUser -Force
+Find-Package Pscx -Source PSGallery | Install-Package -Scope CurrentUser -Force
 
 # Get tools
 Register-PackageSource -Name tws-tools -Location https://www.myget.org/F/tws-tools/ -Trusted  -ProviderName Chocolatey

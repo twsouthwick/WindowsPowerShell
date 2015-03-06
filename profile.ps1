@@ -92,6 +92,12 @@ Set-Alias -Name git  -Value "C:\Program Files (x86)\Git\bin\Git.exe"
 Set-Alias -Name nuget -Value "$env:AppData\..\Local\OneGet\ProviderAssemblies\nuget-anycpu.exe" 
 Set-Alias -Name kvm -Value "$env:USERPROFILE\.k\bin\kvm.ps1"
 
+# Set up 'git' to point to 'hub' if 'hub' is available
+if (Get-Command -Name hub -OutVariable hubcmd -ErrorAction Ignore)
+{
+	Set-Alias -Name git -Value $hubcmd.Source
+}
+
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }
 
 New-PSDrive repos FileSystem $env:USERPROFILE\Source\Repos\ | Out-Null

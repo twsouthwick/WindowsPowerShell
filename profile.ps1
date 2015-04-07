@@ -29,11 +29,14 @@ $env:GIT_SSH="C:\Program Files (x86)\PuTTY\plink.exe"
 #############################################
 if($host.Name -eq 'ConsoleHost')
 {
-  Import-Module PSReadLine-vim
+  #Import-Module PSReadLine-vim
 
-  Set-PSReadlineOption -EditMode Vi
+  #Set-PSReadlineOption -EditMode Vi
   Set-PSReadlineKeyHandler -Key Tab -Function Complete
   Set-PSReadlineOption -BellStyle Visual
+
+  # Coloring gets off because we set colors in the startup script
+  Set-psreadlineoption -ResetTokenColors  
 }
 
 Import-Module posh-git2

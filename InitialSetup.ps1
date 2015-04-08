@@ -4,6 +4,8 @@
 # http://boxstarter.org/package/nr/url?https://github.com/twsouthwick/WindowsPowerShell/blob/master/BoxStarter.txt
 #
 
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
+
 Import-Module OneGet
 
 # Get PS components

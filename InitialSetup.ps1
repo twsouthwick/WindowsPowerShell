@@ -1,3 +1,9 @@
+# This needs to be run after git is installed (most likely with BoxStarter)
+#
+# Launch as Admin:
+# http://boxstarter.org/package/nr/url?https://github.com/twsouthwick/WindowsPowerShell/blob/master/BoxStarter.txt
+#
+
 Import-Module OneGet
 
 # Get PS components

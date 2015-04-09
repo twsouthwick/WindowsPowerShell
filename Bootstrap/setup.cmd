@@ -17,7 +17,7 @@ REM Setup PS environment
 git clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documents\WindowsPowerShell
 
 REM Move _vimrc
-xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE%\_vimrc /y
+xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE% /y
 
 REM Setup git config
 %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\SetupGitConfig.cmd

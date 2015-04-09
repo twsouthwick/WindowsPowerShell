@@ -7,8 +7,6 @@
 # & 'C:\Program Files (x86)\Git\bin\git.exe' clone https://github.com/twsouthwick/WindowsPowerShell $env:USERPROFILE\Documents\WindowsPowerShell
 #
 
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
-
 Import-Module OneGet
 
 # Get PS components

@@ -11,7 +11,7 @@ cinst -y Firefox
 cinst -y putty
 cinst -y keepass
 cinst -y opera
-cinst -y chrome
+cinst -y googlechrome
 cinst -y beyondcompare
 cinst -y lessmsi
 cinst -y speccy

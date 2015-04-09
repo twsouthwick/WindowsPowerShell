@@ -3,7 +3,8 @@ cinst -y git
 cinst -y git-credential-winstore
 cinst -y vim
 cinst -y dotpeek
-cinst -y Devbox-RapidEE
+#This cannot be done unattended
+#cinst -y Devbox-RapidEE
 cinst -y notepadplusplus
 cinst -y 7zip
 cinst -y Firefox

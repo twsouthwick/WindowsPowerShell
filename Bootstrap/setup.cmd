@@ -13,5 +13,11 @@ REM Setup RemoteSigned
 REM Setup PS environment
 "C:\Program Files (x86)\Git\bin\git.exe" clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documents\WindowsPowerShell
 
+REM Move _vimrc
+xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE%\_vimrc /y
+
+REM Setup git config
+@powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\SetupGitConfig.ps1"
+
 REM THIS IS NOT NON-INTERACTIVE YET
-REM @powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\InitialSetup.ps1"
+REM @powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\InitialSetup.ps1"

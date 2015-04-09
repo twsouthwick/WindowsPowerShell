@@ -1,3 +1,6 @@
+REM Add git to path (for this script)
+SET PATH=%PATH%;C:\Program Files (x86)\Git\bin
+
 REM Download Chocolatey
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
@@ -11,7 +14,7 @@ REM Setup RemoteSigned
 @powershell -NoProfile -Command "Set-ExecutionPolicy RemoteSigned"
 
 REM Setup PS environment
-"C:\Program Files (x86)\Git\bin\git.exe" clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documents\WindowsPowerShell
+git clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documents\WindowsPowerShell
 
 REM Move _vimrc
 xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE%\_vimrc /y

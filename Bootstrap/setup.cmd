@@ -1,26 +1,26 @@
-REM Add git to path (for this script)
+:: Add git to path (for this script)
 SET PATH=%PATH%;C:\Program Files (x86)\Git\bin
 
-REM Download Chocolatey
+:: Download Chocolatey
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
-REM Get Chocolatey packages
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/twsouthwick/WindowsPowerShell/master/Bootstrap/ChocolateyInstall.ps1'))"
+:: Get Chocolatey packages
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/twsouthwick/WindowsPowerShell/master/Bootstrap/choco_packages.cmd'))"
 
-REM Setup DNX
+:: Setup DNX
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
 
-REM Setup RemoteSigned
+:: Setup RemoteSigned
 @powershell -NoProfile -Command "Set-ExecutionPolicy RemoteSigned"
 
-REM Setup PS environment
+:: Setup PS environment
 git clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documents\WindowsPowerShell
 
-REM Move _vimrc
+:: Move _vimrc
 xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE% /y
 
-REM Setup git config
-%USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\SetupGitConfig.cmd
+:: Setup git config
+%USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\git_config_setup.cmd
 
-REM THIS IS NOT NON-INTERACTIVE YET
-REM @powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\InitialSetup.ps1"
+:: THIS IS NOT NON-INTERACTIVE YET
+:: @powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\InitialSetup.ps1"

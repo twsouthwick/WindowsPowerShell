@@ -17,7 +17,7 @@ REM Move _vimrc
 xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE%\_vimrc /y
 
 REM Setup git config
-@powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\SetupGitConfig.ps1"
+%USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\SetupGitConfig.cmd
 
 REM THIS IS NOT NON-INTERACTIVE YET
 REM @powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\InitialSetup.ps1"

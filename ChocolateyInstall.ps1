@@ -20,3 +20,4 @@ cinst -y lockhunter
 cinst -y filebot
 cinst -y ilspy
 cinst -y procmon
+cinst github-hub -version 2.2.0

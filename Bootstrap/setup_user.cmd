@@ -8,7 +8,7 @@ git clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documen
 xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE% /y
 
 :: Setup git config
-%USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\git_config_setup.cmd
+call %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\git_config_setup.cmd
 
-:: THIS IS NOT NON-INTERACTIVE YET
-:: @powershell -NoProfile -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\InitialSetup.ps1"
+REM :: Download PSModules.  NOTE: This seems to stall on recent Win10 builds
+:: powershell -NoProfile -ExecutionPolicy unrestricted -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\install_psmodules.ps1"

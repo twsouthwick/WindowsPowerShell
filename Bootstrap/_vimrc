@@ -169,3 +169,19 @@ set shellcmdflag=-command
 set backup                    " keep a backup file
 set backupdir=~/.vim/_backups " store backups here
 set directory=~/.vim/_swaps   " store swap files here
+
+"------------------------------------------------------------
+" gVim Settings
+"
+if has("gui_win32")
+  colors slate
+
+  " Remove toolbars
+  set guioptions-=m  "remove menu bar
+  set guioptions-=T  "remove toolbar
+  set guioptions-=r  "remove right-hand scroll bar
+  set guioptions-=L  "remove left-hand scroll bar
+
+  " Setup full screen on gVim
+  autocmd GUIEnter * :simalt ~x 
+endif 

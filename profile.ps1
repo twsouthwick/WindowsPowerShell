@@ -93,7 +93,7 @@ Set-Alias -Name loc  -Value Copy-Location
 Set-Alias -Name npp  -Value "C:\Program Files (x86)\Notepad++\notepad++.exe"
 Set-Alias -Name vim  -Value "C:\Program Files (x86)\Vim\vim74\vim.exe"
 Set-Alias -Name git  -Value "C:\Program Files (x86)\Git\bin\Git.exe"
-Set-Alias -Name nuget -Value "$env:AppData\..\Local\OneGet\ProviderAssemblies\nuget-anycpu.exe" 
+Set-Alias -Name nuget -Value "$env:AppData\..\Local\PackageManagement\ProviderAssemblies\nuget-anycpu.exe" 
 Set-Alias -Name kvm -Value "$env:USERPROFILE\.k\bin\kvm.ps1"
 
 # Set up 'git' to point to 'hub' if 'hub' is available

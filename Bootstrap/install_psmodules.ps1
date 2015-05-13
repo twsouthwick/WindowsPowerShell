@@ -1,5 +1,3 @@
-Import-Module OneGet
-
 # Get PS components
 if(-Not (Get-PSRepository -Name tws-ps -ErrorAction Ignore)){
 	Register-PSRepository -Name tws-ps -SourceLocation https://www.myget.org/F/tws-ps/ -InstallationPolicy Trusted

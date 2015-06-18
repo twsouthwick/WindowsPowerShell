@@ -20,10 +20,15 @@ Clear-Host
 ## Set up variables                        ##
 #############################################
 
+if($env:PROCESSOR_ARCHITECTURE -eq "amd64"){
+	$programFiles = ${env:ProgramFiles(x86)}
+} else {
+	$programFiles = ${env:ProgramFiles}
+}
 $env:poshgit2_seq_server="http://localhost:5341/#/events"
-$env:GIT="C:\Program Files (x86)\git\bin\git.exe"
+$env:GIT="$programFiles\git\bin\git.exe"
 $env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\"
-$env:GIT_SSH="C:\Program Files (x86)\PuTTY\plink.exe"
+$env:GIT_SSH="$programFiles\PuTTY\plink.exe"
 
 #############################################
 ## Import modules                          ##
@@ -90,9 +95,9 @@ catch [Exception]
 #############################################
 
 Set-Alias -Name loc  -Value Copy-Location
-Set-Alias -Name npp  -Value "C:\Program Files (x86)\Notepad++\notepad++.exe"
-Set-Alias -Name vim  -Value "C:\Program Files (x86)\Vim\vim74\vim.exe"
-Set-Alias -Name git  -Value "C:\Program Files (x86)\Git\bin\Git.exe"
+Set-Alias -Name npp  -Value "$programFiles\Notepad++\notepad++.exe"
+Set-Alias -Name vim  -Value "$programFiles\Vim\vim74\vim.exe"
+Set-Alias -Name git  -Value "$programFiles\Git\bin\Git.exe"
 Set-Alias -Name nuget -Value "$env:AppData\..\Local\PackageManagement\ProviderAssemblies\nuget-anycpu.exe" 
 Set-Alias -Name kvm -Value "$env:USERPROFILE\.k\bin\kvm.ps1"
 

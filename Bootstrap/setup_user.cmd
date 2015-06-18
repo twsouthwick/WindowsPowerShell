@@ -1,5 +1,5 @@
 :: Add git to path (for this script)
-SET PATH=%PATH%;C:\Program Files (x86)\Git\bin
+SET PATH=%PATH%;C:\Program Files (x86)\Git\bin;C:\Program Files\Git\bin
 
 :: Setup PS environment
 git clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documents\WindowsPowerShell

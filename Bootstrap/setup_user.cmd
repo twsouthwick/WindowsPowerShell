@@ -9,8 +9,11 @@ xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE% /
 mkdir %USERPROFILE%\.vim\_backups
 mkdir %USERPROFILE%\.vim\_swaps
 
+:: Setup DNX
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
+
 :: Setup git config
 call %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\git_config_setup.cmd
 
-REM :: Download PSModules.  NOTE: This seems to stall on recent Win10 builds
-:: powershell -NoProfile -ExecutionPolicy unrestricted -Command "& $env:USERPROFILE\Documents\WindowsPowerShell\Bootstrap\install_psmodules.ps1"
+:: Download PSModules
+powershell -NoProfile -ExecutionPolicy unrestricted %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\install_psmodules.ps1

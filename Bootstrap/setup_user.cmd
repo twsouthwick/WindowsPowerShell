@@ -4,7 +4,7 @@ mkdir %USERPROFILE%\.vim\_backups
 mkdir %USERPROFILE%\.vim\_swaps
 
 :: Setup DNX
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "&{$Branch='dev';iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1'))}"
+@powershell -NoProfile -ExecutionPolicy unrestricted -Command "Invoke-WebRequest 'https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1' | Invoke-Expression"
 
 :: Setup git config
 call %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\git_config_setup.cmd

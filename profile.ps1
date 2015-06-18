@@ -52,15 +52,11 @@ Import-Module Pscx -force -arg @{CD_EchoNewLocation = $false}
 ## Setup prompt                            ##
 #############################################
 function prompt {
-	$realLASTEXITCODE = $LASTEXITCODE
-
 	$dir = $pwd.Path.Replace("Microsoft.PowerShell.Core\FileSystem::", "");
 
 	Write-Host ("`n[$dir]") -nonewline -ForegroundColor DarkGreen
 
 	Write-VcsStatus
-
-	$global:LASTEXITCODE = $realLASTEXITCODE
 
 	return "`n$ "
 }

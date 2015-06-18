@@ -115,6 +115,7 @@ if(Test-Path $repoPath) {
     New-PSDrive repos FileSystem $repoPath | Out-Null
 }
 
+# Set path to profile
 $PROFILE = $PSCommandPath
 
 # Results will be stored in the $0 variables

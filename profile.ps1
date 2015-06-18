@@ -110,7 +110,10 @@ if (Get-Command -Name hub -OutVariable hubcmd -ErrorAction Ignore)
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }
 
 # Create a drive for source code
-New-PSDrive repos FileSystem $env:USERPROFILE\Source\Repos\ | Out-Null
+$repoPath = "$env:USERPROFILE\Source\Repos\"
+if(Test-Path $repoPath) {
+    New-PSDrive repos FileSystem $repoPath | Out-Null
+}
 
 $PROFILE = $PSCommandPath
 

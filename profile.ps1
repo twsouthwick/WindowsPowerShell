@@ -79,7 +79,7 @@ $variable:preference:log:current_log = "$variable:preference:log:path\" + ([Syst
 
 if(!(Test-Path $variable:preference:log:path))
 {
-	New-Item -ItemType Directory -Path $variable:preference:log:path
+	New-Item -ItemType Directory -Path $variable:preference:log:path | Out-Null
 }
 
 try

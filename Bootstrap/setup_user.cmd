@@ -6,6 +6,8 @@ git clone https://github.com/twsouthwick/WindowsPowerShell %USERPROFILE%\Documen
 
 :: Move _vimrc
 xcopy %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\_vimrc %USERPROFILE% /y
+mkdir %USERPROFILE%\.vim\_backups
+mkdir %USERPROFILE%\.vim\_swaps
 
 :: Setup git config
 call %USERPROFILE%\Documents\WindowsPowerShell\Bootstrap\git_config_setup.cmd

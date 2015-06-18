@@ -120,3 +120,8 @@ $PROFILE = $PSCommandPath
 
 # Results will be stored in the $0 variables
 $PSDefaultParameterValues["Out-Default:OutVariable"] = "0" 
+
+# Clean up variables
+Remove-Item variable:hubcmd
+Remove-Item variable:programFiles
+Remove-Item variable:repoPath

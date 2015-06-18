@@ -20,5 +20,18 @@ $apps = @(
 
 $apps | % { Install-Package $_ -Force }
 
+# Set git-credential-winstore
+if($env:PROCESSOR_ARCHITECTURE -eq "amd64"){
+  $programFiles = ${env:ProgramFiles(x86)}
+} else {
+  $programFiles = ${env:ProgramFiles}
+}
+
+$env:Path = "$env:Path;$programFiles\git\bin"
+$winstorePackage = Get-Package git-credential-winstore
+$winstore = Resolve-Path "$($winstorePackage.Source)\..\lib\net40-Client\git-credential-winstore.exe"
+
+& $winstore -s
+
 # This is not publicly listed.  OneGet does not support tar right now
 # Install-Package github-hub -MinimumVersion 2.2.0 -Force

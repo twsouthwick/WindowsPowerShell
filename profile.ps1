@@ -14,8 +14,6 @@
   }
 }
 
-Clear-Host
-
 #############################################
 ## Set up variables                        ##
 #############################################
@@ -55,17 +53,17 @@ function prompt {
 	$dir = $pwd.Path.Replace("Microsoft.PowerShell.Core\FileSystem::", "");
 
 	Write-Host ("`n[$dir]") -nonewline -ForegroundColor DarkGreen
+	Write-GitStatus
+	Write-Host ""
 
-	Write-VcsStatus
-
-	return "`n$ "
+	return "$ "
 }
 
-$env:TERM = 'cygwin'
-
-$GitPromptSettings.EnableWindowTitle = " "
-$GitPromptSettings.WorkingForegroundColor = "Red"
-$GitPromptSettings.UntrackedForegroundColor = "Red"
+$GitPromptSettings = New-Object PSObject -Property `
+	@{ 
+		WorkingForegroundColor = [System.ConsoleColor]::Red; 
+		UntrackedForegroundColor = [System.ConsoleColor]::Red
+	}
 
 #############################################
 ## Start transcript                        ##

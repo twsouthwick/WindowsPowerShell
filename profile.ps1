@@ -43,7 +43,7 @@ if($host.Name -eq 'ConsoleHost')
   Set-psreadlineoption -ResetTokenColors  
 }
 
-Import-Module posh-git2
+Import-Module poshgit2
 Import-Module Pscx -force -arg @{CD_EchoNewLocation = $false}
 
 #############################################

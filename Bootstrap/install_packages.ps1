@@ -33,5 +33,5 @@ $winstore = Resolve-Path "$($winstorePackage.Source)\..\lib\net40-Client\git-cre
 
 & $winstore -s
 
-# This is not publicly listed.  OneGet does not support tar right now
-# Install-Package github-hub -MinimumVersion 2.2.0 -Force
+# This is not publicly listed
+Install-Package github-hub -MinimumVersion 2.2.1

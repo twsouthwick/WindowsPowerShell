@@ -25,7 +25,7 @@ if($env:PROCESSOR_ARCHITECTURE -eq "amd64"){
 }
 $env:poshgit2_seq_server="http://localhost:5341/#/events"
 $env:GIT="$programFiles\git\bin\git.exe"
-$env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\"
+$env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\;C:\Chocolatey\bin"
 $env:GIT_SSH="$programFiles\PuTTY\plink.exe"
 
 #############################################

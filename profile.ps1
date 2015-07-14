@@ -103,6 +103,9 @@ if (Get-Command -Name hub -OutVariable hubcmd -ErrorAction Ignore)
 
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }
 
+# Git needs this set to work properly
+$env:TERM="msys"
+
 # Create a drive for source code
 $repoPath = "$env:USERPROFILE\Source\Repos\"
 if(Test-Path $repoPath) {

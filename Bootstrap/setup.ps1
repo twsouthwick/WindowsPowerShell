@@ -32,8 +32,8 @@ Install-Package poshgit2,PScx -Scope CurrentUser -Force
 # Setup vim stuff
 Write-Verbose "Copy VIM config"
 Copy-Item $profile\bootstrap\_vimrc ${env:\USERPROFILE}
-New-Item ${env:USERPROFILE}\.vim\_backups -ErrorAction Ignore | Out-Null
-New-Item ${env:USERPROFILE}\.vim\_swaps -ErrorAction Ignore | Out-Null
+New-Item ${env:USERPROFILE}\.vim\_backups -Force -ErrorAction Ignore | Out-Null
+New-Item ${env:USERPROFILE}\.vim\_swaps -Force -ErrorAction Ignore | Out-Null
 
 # Setup DNX
 Write-Verbose "Setup DNX"

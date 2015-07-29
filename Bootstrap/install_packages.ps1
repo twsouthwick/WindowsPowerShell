@@ -34,4 +34,5 @@ $winstore = Resolve-Path "$($winstorePackage.Source)\..\lib\net40-Client\git-cre
 & $winstore -s
 
 # This is not publicly listed
-Install-Package github-hub -MinimumVersion 2.2.1
+# Does not work yet on Windows 10
+# Install-Package github-hub -MinimumVersion 2.2.1 -Force

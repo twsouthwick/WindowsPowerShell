@@ -91,7 +91,6 @@ catch [Exception]
 Set-Alias -Name loc  -Value Copy-Location
 Set-Alias -Name npp  -Value "$programFiles\Notepad++\notepad++.exe"
 Set-Alias -Name vim  -Value "$programFiles\Vim\vim74\vim.exe"
-Set-Alias -Name git  -Value "$programFiles\Git\bin\Git.exe"
 Set-Alias -Name nuget -Value "$env:AppData\..\Local\PackageManagement\ProviderAssemblies\nuget-anycpu.exe" 
 Set-Alias -Name kvm -Value "$env:USERPROFILE\.k\bin\kvm.ps1"
 

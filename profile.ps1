@@ -64,49 +64,16 @@ $GitPromptSettings = New-Object PSObject -Property `
 	}
 
 #############################################
-## Start transcript                        ##
-#############################################
-$variable:preference:log:path = "C:\PSLogs"
-$variable:preference:log:current_log = "$variable:preference:log:path\" + ([System.DateTime]::Now.ToString("yyyyMMdd-HHmmss")) + ".log"
-
-if(!(Test-Path $variable:preference:log:path))
-{
-	New-Item -ItemType Directory -Path $variable:preference:log:path | Out-Null
-}
-
-try
-{
-	Start-Transcript -Path $variable:preference:log:current_log
-	Write-Host ""
-}
-catch [Exception]
-{ }
-
-#############################################
 ## Setup aliases                           ##
 #############################################
 
-Set-Alias -Name loc  -Value Copy-Location
-Set-Alias -Name npp  -Value "$programFiles\Notepad++\notepad++.exe"
-Set-Alias -Name vim  -Value "$programFiles\Vim\vim74\vim.exe"
-Set-Alias -Name kvm -Value "$env:USERPROFILE\.k\bin\kvm.ps1"
-
-# Set up 'git' to point to 'hub' if 'hub' is available
-if (Get-Command -Name hub -OutVariable hubcmd -ErrorAction Ignore)
-{
-	Set-Alias -Name git -Value $hubcmd.Source
-}
+Set-Alias -Name npp -Value "$programFiles\Notepad++\notepad++.exe"
+Set-Alias -Name vim -Value "$programFiles\Vim\vim74\vim.exe"
 
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }
 
 # Git needs this set to work properly
 #$env:TERM="msys"
-
-# Create a drive for source code
-$repoPath = "$env:USERPROFILE\Source\Repos\"
-if(Test-Path $repoPath) {
-    New-PSDrive repos FileSystem $repoPath | Out-Null
-}
 
 # Set path to profile
 $PROFILE = $PSCommandPath
@@ -115,6 +82,4 @@ $PROFILE = $PSCommandPath
 $PSDefaultParameterValues["Out-Default:OutVariable"] = "0" 
 
 # Clean up variables
-Remove-Item variable:hubcmd
 Remove-Item variable:programFiles
-Remove-Item variable:repoPath

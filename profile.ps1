@@ -33,7 +33,7 @@ if($host.Name -eq 'ConsoleHost')
 {
   #Import-Module PSReadLine-vim
 
-  #Set-PSReadlineOption -EditMode Vi
+  Set-PSReadlineOption -EditMode Vi
   Set-PSReadlineKeyHandler -Key Tab -Function Complete
   Set-PSReadlineOption -BellStyle Visual
 

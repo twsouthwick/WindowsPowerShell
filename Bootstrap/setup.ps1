@@ -7,11 +7,14 @@ if((Get-ExecutionPolicy) -ne "RemoteSigned")
 }
 
 # Ensure git is available
-Write-Verbose "Installing git"
-Install-Package git -Force
-Set-Alias -Name git -Value 'C:\Program Files (x86)\Git\bin\git.exe'
+if(!(Get-Command git -ErrorAction Ignore))
+{
+	Write-Verbose "Installing git"
+	Install-Package git -Force
+	Set-Alias -Name git -Value 'C:\Program Files (x86)\Git\bin\git.exe'
+}
 
-# Clone repo"
+# Clone repo
 $profile = "${env:\USERPROFILE}\Documents\WindowsPowerShell"
 
 if(-Not (Test-Path $profile))
@@ -23,7 +26,7 @@ if(-Not (Test-Path $profile))
 ## Get PS components
 Write-Verbose "Registering package sources"
 if(-Not (Get-PSRepository -Name poshgit2 -ErrorAction Ignore)){
-  Register-PackageSource -Name poshgit2 -Location https://www.myget.org/F/poshgit2/api/v2 -Trusted -ProviderName PSModule
+  Register-PackageSource -Name poshgit2 -Location https://www.myget.org/F/poshgit2/api/v2 -Trusted -ProviderName PowerShellGet
 }
 
 Write-Verbose "Installing PS Modules"
@@ -35,10 +38,6 @@ Copy-Item $profile\bootstrap\_vimrc ${env:\USERPROFILE}
 New-Item ${env:USERPROFILE}\.vim\_backups -ItemType Directory -Force -ErrorAction Ignore | Out-Null
 New-Item ${env:USERPROFILE}\.vim\_swaps -ItemType Directory -Force -ErrorAction Ignore | Out-Null
 
-# Setup DNX
-Write-Verbose "Setup DNX"
-Invoke-WebRequest 'https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.ps1' | Invoke-Expression
- 
 # Setup git config
 Write-Verbose "Set up git config"
 git config --global alias.co checkout 

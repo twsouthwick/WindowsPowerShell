@@ -47,7 +47,7 @@ if($host.Name -eq 'ConsoleHost')
 }
 
 Import-Module poshgit2
-Import-Module Pscx -force -arg @{CD_EchoNewLocation = $false}
+# Import-Module Pscx -force -arg @{CD_EchoNewLocation = $false}
 
 #############################################
 ## Setup prompt                            ##
@@ -55,11 +55,9 @@ Import-Module Pscx -force -arg @{CD_EchoNewLocation = $false}
 function prompt {
 	$dir = $pwd.Path.Replace("Microsoft.PowerShell.Core\FileSystem::", "");
 
-	Write-Host ("`n[$dir]") -nonewline -ForegroundColor DarkGreen
-	Write-GitStatus
-	Write-Host ""
-
-	return "$ "
+	$status = Write-GitStatus -VT100
+  $esc = [char]0x1b
+	return "`n${esc}[0m${esc}[32;3m[$dir]${esc}[0m$status`n$ "
 }
 
 $GitPromptSettings = New-Object PSObject -Property `

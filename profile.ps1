@@ -22,10 +22,11 @@ if($host.Name -eq 'ConsoleHost')
 {
   Set-PSReadlineOption -EditMode Vi
   Set-PSReadlineKeyHandler -Key Tab -Function Complete
-  #Set-PSReadlineOption -BellStyle Visual
+  Set-PSReadlineOption -BellStyle Visual
+  Set-PSReadlineKeyHandler -Key Ctrl+r -Function ReverseSearchHistory
 
   # Coloring gets off because we set colors in the startup script
-  #Set-psreadlineoption -ResetTokenColors  
+  Set-PSReadlineOption -ResetTokenColors
 }
 
 Import-Module poshgit2

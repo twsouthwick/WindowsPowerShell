@@ -38,7 +38,7 @@ Import-Module Pscx -arg @{CD_EchoNewLocation = $false}
 function prompt {
 	$dir = $pwd.Path.Replace("Microsoft.PowerShell.Core\FileSystem::", "");
 
-	$status = Write-GitStatus -VT100
+	$status = Get-RepositoryStatus -VT100
 	$esc = [char]0x1b
 	
 	return "`n${esc}[0m${esc}[32;3m[$dir]${esc}[0m$status`n$ "

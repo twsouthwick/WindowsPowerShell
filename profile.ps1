@@ -23,7 +23,8 @@ if($host.Name -eq 'ConsoleHost')
   Set-PSReadlineOption -EditMode Vi
   Set-PSReadlineKeyHandler -Key Tab -Function Complete
   Set-PSReadlineOption -BellStyle Visual
-  Set-PSReadlineKeyHandler -Key Ctrl+r -Function ReverseSearchHistory
+  Set-PSReadlineKeyHandler -Key Ctrl+r -Function ReverseSearchHistory -ViMode Insert
+  Set-PSReadlineKeyHandler -Key Ctrl+r -Function ReverseSearchHistory -ViMode Command
 
   # Coloring gets off because we set colors in the startup script
   Set-PSReadlineOption -ResetTokenColors
@@ -32,16 +33,35 @@ if($host.Name -eq 'ConsoleHost')
 Import-Module poshgit2
 Import-Module Pscx -arg @{CD_EchoNewLocation = $false}
 
+function IsAdmin {
+	$wid = [System.Security.Principal.WindowsIdentity]::GetCurrent() 
+	$prp = New-Object System.Security.Principal.WindowsPrincipal($wid)
+	$adm = [System.Security.Principal.WindowsBuiltInRole]::Administrator
+
+	return $prp.IsInRole($adm)  
+}
+
 #############################################
 ## Setup prompt                            ##
 #############################################
 function prompt {
 	$dir = $pwd.Path.Replace("Microsoft.PowerShell.Core\FileSystem::", "");
 
+	if ($dir.StartsWith($env:USERPROFILE))
+	{
+		$dir = $dir.Replace($env:USERPROFILE, "~");
+	}
+
 	$status = Get-RepositoryStatus -VT100
 	$esc = [char]0x1b
+
+	$now = [System.DateTime]::Now
+	$date = $now.ToShortDateString()
+	$time = $now.ToShortTimeString()
+	$reset = "${esc}[0m";
+	$admin = if(IsAdmin) { "${esc}[1,33mADMIN :: " } else { "" }
 	
-	return "`n${esc}[0m${esc}[32;3m[$dir]${esc}[0m$status`n$ "
+	return "`n$admin${esc}[1;32;3m[$dir] ${esc}[0;32;2m$date $time ${reset}$status`n$ "
 }
 
 $GitPromptSettings = New-Object PSObject -Property `

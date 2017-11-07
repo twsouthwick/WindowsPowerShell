@@ -13,7 +13,6 @@ if($env:PROCESSOR_ARCHITECTURE -eq "amd64"){
 	$programFiles = ${env:ProgramFiles}
 }
 $env:poshgit2_seq_server="http://localhost:5341/#/events"
-$env:PATH="$env:PATH;c:\ProgramData\chocolatey\bin\;C:\Chocolatey\bin"
 
 #############################################
 ## Import modules                          ##
@@ -31,7 +30,6 @@ if($host.Name -eq 'ConsoleHost')
 }
 
 Import-Module poshgit2
-Import-Module Pscx -arg @{CD_EchoNewLocation = $false}
 
 function IsAdmin {
 	$wid = [System.Security.Principal.WindowsIdentity]::GetCurrent() 
@@ -75,12 +73,9 @@ $GitPromptSettings = New-Object PSObject -Property `
 #############################################
 
 Set-Alias -Name npp -Value "$programFiles\Notepad++\notepad++.exe"
-Set-Alias -Name vim -Value "$programFiles\Vim\vim74\vim.exe"
+Set-Alias -Name vim -Value "$programFiles\Vim\vim80\vim.exe"
 
 function Copy-Location  { (Get-Location).Path | Out-Clipboard }
-
-# Git needs this set to work properly
-#$env:TERM="msys"
 
 # Set path to profile
 $PROFILE = $PSCommandPath

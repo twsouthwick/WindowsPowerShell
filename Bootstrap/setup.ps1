@@ -30,7 +30,7 @@ if(-Not (Get-PSRepository -Name poshgit2 -ErrorAction Ignore)){
 }
 
 Write-Verbose "Installing PS Modules"
-Install-Package poshgit2,PScx -Scope CurrentUser -Force
+Install-Package poshgit2 -Scope CurrentUser -Force
 
 # Setup vim stuff
 Write-Verbose "Copy VIM config"
